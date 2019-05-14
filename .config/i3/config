@@ -1,0 +1,131 @@
+###--- INITIAL SETS and STARTUPS ---###
+set $mod Mod4
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+exec_always --no-startup-id unclutter
+exec_always --no-startup-id "xcompmgr -CcfF -I-.1 -O-.1 -D2 -t-3 -l-3 -r4.2 -o-.7"
+exec_always --no-startup-id "feh --no-fehbg --bg-scale $HOME/Pictures/Wallpaper/wall.png"
+
+floating_modifier $mod
+font pango:LiberationMono 16
+
+
+###--- XF86 KEYBINDS  ---###
+# volume
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 3%+"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 3%-"
+bindsym XF86AudioMute exec "amixer -q sset Master toggle"
+
+# display
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
+
+
+###--- COLORS ---###
+# class			border  backgr.	text	indic.	child_border
+client.focused		#000000 #000000 #999999 #000000 #000000
+client.focused_inactive	#000000	#000000	#999999	#000000	#000000
+client.unfocused	#000000	#000000	#999999	#000000	#000000
+client.urgent		#000000	#000000	#FF0000	#000000	#000000
+client.placeholder	#000000	#000000	#000000	#000000	#000000
+client.background	#000000
+
+
+###--- MAIN KEYBINDS ---###
+# i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec "i3-msg exit"
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q kill
+
+# programs
+bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Shift+w exec --no-startup-id waterfox
+
+
+###--- WINDOW MANIPULATION ---###
+#decoration
+for_window [class="^.*"] border pixel 2
+gaps inner 2
+gaps outer 2
+
+# focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# movement
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# splitting
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+
+
+###--- CONTAINER MANIPULATION ---###
+# layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tile/float
+bindsym $mod+Shift+space floating toggle
+
+# focus tile/float
+bindsym $mod+space focus mode_toggle
+
+# focus parent/child
+bindsym $mod+a focus parent
+#bindsym $mod+d focus child
+
+
+###--- WORKSPACE MANIPULATION ---###
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
